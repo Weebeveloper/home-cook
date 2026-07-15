@@ -1,0 +1,40 @@
+<header>
+  <section class="header-actions">
+    <button class="return-button" matIconButton (click)="onReturn()">
+      <mat-icon>keyboard_backspace</mat-icon>
+    </button>
+
+    <button matMiniFab [disabled]="isLoading()" (click)="onOpenIngredientsWindow()">
+      <mat-icon>list_alt</mat-icon>
+    </button>
+  </section>
+
+  <div class="header-title">{{ recipeDescription.value() }}</div>
+</header>
+
+<main>
+  @if (isLoading()) {
+    <section class="loading"><mat-spinner></mat-spinner></section>
+  }
+
+  @for (step of recipeSteps.value(); track $index) {
+    <section class="recipe-step">
+      <div class="step-header">{{ step.stepName }}</div>
+
+      @for (paragraph of step.paragraphs; track $index) {
+        <p>{{ paragraph }}</p>
+      }
+
+      @if (step.hasTimer) {
+        <button matFab extended>
+          <mat-icon>timer</mat-icon>
+          <span>הפעל שעון</span>
+        </button>
+      }
+    </section>
+
+    @if (!$last) {
+      <mat-divider></mat-divider>
+    }
+  }
+</main>

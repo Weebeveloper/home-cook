@@ -1,0 +1,28 @@
+<section class="title">בחירת שימוש</section>
+
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title> בישול</mat-panel-title>
+      <mat-panel-description> בחירת מתכונים </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-list class="cook-list">
+      <mat-list-item (click)="onActionClick(RECIPE_BOOK_URL)">בחירת מתכון</mat-list-item>
+      <mat-divider></mat-divider>
+
+      <mat-list-item>יצירת מתכון</mat-list-item>
+      <mat-divider></mat-divider>
+
+      <mat-list-item>מחיקת מתכון</mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title> הזמנות </mat-panel-title>
+      <mat-panel-description> הזמנות משלוחים </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>בפיתוח :)</p>
+  </mat-expansion-panel>
+</mat-accordion>

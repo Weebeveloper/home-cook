@@ -1,0 +1,27 @@
+<button matIconButton (click)="onReturn()"><mat-icon>keyboard_backspace</mat-icon></button>
+
+<section class="title">
+  <mat-icon>receipt</mat-icon>
+  <span>בחירת מתכון</span>
+</section>
+
+<section class="recipe-list">
+  @if (recipeDescription.isLoading()) {
+    <div class="loading">
+      <mat-spinner [strokeWidth]="8"></mat-spinner>
+    </div>
+  } @else {
+    @for (recipe of recipeDescription.value(); track recipe.recipeId) {
+      <recipe-selection
+        [recipeName]="recipe.recipeName"
+        [recipeDescription]="recipe.recipeDescription"
+        [recipeImage]="recipe.image64Bit"
+        (click)="onRecipeSelected(recipe.recipeId)"
+      ></recipe-selection>
+
+      @if (!$last) {
+        <mat-divider></mat-divider>
+      }
+    }
+  }
+</section>
